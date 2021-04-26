@@ -15,13 +15,5 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v1
         
-      - name: List files
-        run: ls -la
-  
-  
-  ui_testing:
-    runs-on: macos-latest
-
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v1
+      - name: Xcode Test
+        uses: devbotsxyz/xcode-test@v1.1.0
