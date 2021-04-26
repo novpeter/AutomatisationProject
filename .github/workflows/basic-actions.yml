@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  unit_testing:
+  Testing:
     runs-on: macos-latest
 
     steps:
@@ -17,3 +17,5 @@ jobs:
         
       - name: Xcode Test
         uses: devbotsxyz/xcode-test@v1.1.0
+        with:
+          destination: 'platform=iOS Simulator,OS=14.4,name=iPhone 12'
