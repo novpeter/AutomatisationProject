@@ -7,12 +7,15 @@ on:
     branches: [ master ]
 
 jobs:
-
-  Testing:
-    runs-on: macos-latest
-    
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
     steps:
-      - name: Hello World action
-        uses: actions/hello-world-js-action@v1.0
-        with:
-         who-to-greet: 'Mona the Octocat'
+    - name: Hello world action step
+      id: hello
+      uses: novpeter/hello-world-js-action@v1.0
+      with:
+        who-to-greet: 'Petr'
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
