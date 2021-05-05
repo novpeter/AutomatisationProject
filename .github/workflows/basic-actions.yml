@@ -10,10 +10,9 @@ jobs:
 
   Testing:
     runs-on: macos-latest
-
+    
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v1
-        
-      - name: Xcode Test
+      - name: Hello World action
         uses: novpeter/hello-world-js-action@v1.0
+        with:
+         who-to-greet: 'Mona the Octocat'
