@@ -16,4 +16,4 @@ jobs:
         uses: actions/checkout@v1
         
       - name: Xcode Test
-        uses: novpeter/xcode-run-tests-action@v1.0.1
+        uses: novpeter/xcode-run-tests-action@v1.0.2
