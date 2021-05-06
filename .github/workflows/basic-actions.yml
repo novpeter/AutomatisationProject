@@ -7,15 +7,13 @@ on:
     branches: [ master ]
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
+
+  Testing:
+    runs-on: macos-latest
+
     steps:
-    - name: Hello world action step
-      id: hello
-      uses: novpeter/hello-world-js-action@v1.0.1
-      with:
-        who-to-greet: 'Petr'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Clone repository
+        uses: actions/checkout@v1
+        
+      - name: Xcode Test
+        uses: novpeter/xcode-run-tests-action@v1.0
