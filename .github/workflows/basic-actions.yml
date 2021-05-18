@@ -15,6 +15,9 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v1
         
+      - name: SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        
       - name: Xcode Test
         uses: novpeter/xcode-run-tests-action@v1.0.10
         with:
