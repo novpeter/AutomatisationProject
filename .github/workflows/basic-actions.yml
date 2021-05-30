@@ -27,6 +27,3 @@ jobs:
         uses: novpeter/xcode-run-tests-action@v1.0.10
         with:
           result-bundle-path: 'AutomatisationProject/TestResults'
-        
-      - name: List of folders
-        run: ls -ld
