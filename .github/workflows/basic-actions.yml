@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: swift-lint-results
-          path: SwiftLintResults.txt
+          path: ./SwiftLintResults.txt
       
 
   XcodeTesting:
