@@ -16,6 +16,9 @@ jobs:
         
       - name: GitHub Action for SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
+        
+      - run: tree
+        shell: bash
 
   XcodeTesting:
     runs-on: macos-latest
