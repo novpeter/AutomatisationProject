@@ -17,10 +17,6 @@ jobs:
       - name: GitHub Action for SwiftLint
         uses: novpeter/action-swiftlint@1.1
         
-      - name: Show workspace path
-        run: echo ${{ github.workspace }}
-        shell: bash
-        
       - name: Show folder hierarchy
         run: tree
         shell: bash
@@ -30,3 +26,18 @@ jobs:
         with:
           name: swift-lint-results
           path: ${{ github.workspace }}/SwiftLintResult.txt
+          
+  XcodeTesting:
+    runs-on: macos-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v1
+        
+      - name: Xcode Test
+        uses: novpeter/xcode-run-tests-action@v1.0.10
+        with:
+          result-bundle-path: 'AutomatisationProject/TestResults'
+          
+      - name: Show folder hierarchy
+        run: tree
+        shell: bash
