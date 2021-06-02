@@ -40,7 +40,7 @@ jobs:
       - name: Xcode Test
         uses: novpeter/xcode-run-tests-action@v1.0.10
         with:
-          result-bundle-path: ${{ github.workspace }}/Logs/TestResults'
+          result-bundle-path: ${{ github.workspace }}/Logs/TestResults
           
       - name: Show hierarchy 
         run: tree
@@ -50,4 +50,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: xcode-test-results
-          path: ${{ github.workspace }}/Logs/TestResults.xcresult'
+          path: ${{ github.workspace }}/Logs/TestResults.xcresult
