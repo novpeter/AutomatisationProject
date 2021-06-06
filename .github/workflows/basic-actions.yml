@@ -38,7 +38,7 @@ jobs:
         shell: bash
         
       - name: Xcode Test
-        uses: novpeter/xcode-run-tests-action@v1.0.18
+        uses: novpeter/xcode-run-tests-action@v1.0.19
         with:
           result-bundle-path: ${{ github.workspace }}/Logs/TestResults
           
