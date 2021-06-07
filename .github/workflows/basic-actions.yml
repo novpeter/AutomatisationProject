@@ -37,7 +37,7 @@ jobs:
         uses: novpeter/xcode-run-tests-action@v1.0.28
         with:
           result-bundle-path: ${{ github.workspace }}/Logs/TestResults
-          screen-recording-bundle-path: ${{ github.workspace }}/Logs/ScreenRecording.mp4
+          screen-record-bundle-path: ${{ github.workspace }}/Logs/ScreenRecording.mp4
           
       - name: Install tree
         run: brew install tree
