@@ -33,15 +33,15 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v1
         
+      - name: Xcode Test
+        uses: novpeter/xcode-run-tests-action@v1.0.23
+        with:
+          result-bundle-path: ${{ github.workspace }}/Logs/TestResults
+          
       - name: Install tree
         run: brew install tree
         shell: bash
         
-      - name: Xcode Test
-        uses: novpeter/xcode-run-tests-action@v1.0.22
-        with:
-          result-bundle-path: ${{ github.workspace }}/Logs/TestResults
-          
       - name: Show hierarchy 
         run: tree
         shell: bash
