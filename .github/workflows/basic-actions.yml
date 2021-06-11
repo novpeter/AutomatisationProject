@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v1
       
       - name: osascript
-        run: osascript -e 'tell application "Terminal" to do script "uptime"'
+        run: sudo osascript -e 'tell application "Terminal" to do script "uptime"'
         shell: bash
         
       - name: Xcode Test
