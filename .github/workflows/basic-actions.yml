@@ -13,10 +13,6 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v1
-      
-      - name: osascript
-        run: sudo osascript -e 'tell application "Terminal" to do script "uptime"'
-        shell: bash
         
       - name: Xcode Test
         uses: novpeter/xcode-run-tests-action@v1.0.35
