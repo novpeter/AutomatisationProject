@@ -19,7 +19,8 @@ jobs:
         shell: bash
 
       - name: Clone XCResultParser
-        run: mkdir ${{ github.workspace }}/Scripts/xcresult-parser
+        run: mkdir ${{ github.workspace }}/Scripts
+          && mkdir ${{ github.workspace }}/Scripts/xcresult-parser
           && cd ${{ github.workspace }}/Scripts/xcresult-parser
           && git clone https://github.com/novpeter/xcresult-parser.git ${{ github.workspace }}/Scripts/xcresult-parser
         shell: bash 
