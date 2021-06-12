@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Educational review CI
+name: Student solution review
 
 on:
   pull_request:
@@ -75,6 +75,4 @@ jobs:
       
       - name: Show hierarchy
         run: tree
-        shell: bash
-        run: uptime
         shell: bash
