@@ -28,9 +28,6 @@ jobs:
         run: mkdir ${{ github.workspace }}/Scripts 
           && cd ${{ github.workspace }}/Scripts
           && git clone https://github.com/novpeter/xcresult-parser.git ${{ github.workspace }}/Scripts
-          && cd ${{ github.workspace }}/Scripts/xcresult-parser
-          && swift build 
-          && swift run XCResultParser ${{ github.workspace }}/Logs/TestResults > ${{ github.workspace }}/Logs/TestResults.txt
         shell: bash 
         
       - name: Show hierarchy
