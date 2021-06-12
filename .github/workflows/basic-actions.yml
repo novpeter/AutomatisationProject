@@ -13,12 +13,6 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v1
-        
-      - name: Xcode test
-        uses: novpeter/xcode-run-tests-action@v1.0.37
-        with:
-          result-bundle-path: ${{ github.workspace }}/Logs/TestResults
-          screen-record-bundle-path: ${{ github.workspace }}/Logs/ScreenRecording.mp4
           
       - name: Install tree
         run: brew install tree
@@ -36,12 +30,5 @@ jobs:
         
       - name: Parse .xcresult file
         run: cd ${{ github.workspace }}/Scripts/xcresult-parser
-          && swift build 
-          && swift run XCResultParser ${{ github.workspace }}/Logs/TestResults > ${{ github.workspace }}/Logs/TestResults.txt
+          && swift build
         shell: bash 
-        
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: xcode-test-results
-          path: ${{ github.workspace }}/Logs/TestResults.txt
