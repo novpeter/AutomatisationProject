@@ -20,16 +20,32 @@ jobs:
           result-bundle-path: ${{ github.workspace }}/Logs/TestResults
           screen-record-bundle-path: ${{ github.workspace }}/Logs/ScreenRecording.mp4
           
-      - name: Install tree
-        run: brew install tree
+      - name: Show hierarchy 
+        run: brew install tree; tree
         shell: bash
         
-      - name: Show hierarchy 
-        run: tree
+      - run: mkdir ${{ github.workspace }}/Scripts
         shell: bash
+        
+      - run: mkdir cd ${{ github.workspace }}/Scripts
+        shell: bash
+        
+      - name: Clone parser
+        run: git clone https://github.com/novpeter/xcresult-parser.git
+        shell: bash
+        
+      - run: cd ${{ github.workspace }}/Scripts/xcresult-parser
+        shell: bash
+       
+      - run: swift build
+        shell: bash 
+      
+      - name: Parse .xcresult file and save to /Logs
+        run: swift run XCResultParser ${{ github.workspace }}/Logs/TestResults > ${{ github.workspace }}/Logs/TestResults.txt
+        shell: bash 
         
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: xcode-test-results
-          path: ${{ github.workspace }}/Logs/TestResults.xcresult
+          path: ${{ github.workspace }}/Logs/TestResults.txt
