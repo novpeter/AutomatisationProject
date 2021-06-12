@@ -19,9 +19,9 @@ jobs:
         shell: bash
 
       - name: Clone XCResultParser
-        run: mkdir ${{ github.workspace }}/Scripts 
-          && cd ${{ github.workspace }}/Scripts
-          && git clone https://github.com/novpeter/xcresult-parser.git ${{ github.workspace }}/Scripts
+        run: mkdir ${{ github.workspace }}/Scripts/xcresult-parser
+          && cd ${{ github.workspace }}/Scripts/xcresult-parser
+          && git clone https://github.com/novpeter/xcresult-parser.git ${{ github.workspace }}/Scripts/xcresult-parser
         shell: bash 
         
       - name: Show hierarchy
