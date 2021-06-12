@@ -13,23 +13,29 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v1
-          
-      - name: Install tree
-        run: brew install tree
-        shell: bash
+      
+      - name: Xcode test
+        uses: novpeter/xcode-run-tests-action@v1.0.37
+        with:
+          result-bundle-path: ${{ github.workspace }}/Logs/TestResults
+          screen-record-bundle-path: ${{ github.workspace }}/Logs/ScreenRecording.mp4
 
       - name: Clone XCResultParser
         run: mkdir ${{ github.workspace }}/Scripts
           && mkdir ${{ github.workspace }}/Scripts/xcresult-parser
           && cd ${{ github.workspace }}/Scripts/xcresult-parser
           && git clone https://github.com/novpeter/xcresult-parser.git ${{ github.workspace }}/Scripts/xcresult-parser
+          && cd ${{ github.workspace }}/Scripts/xcresult-parser
+          && swift build
+          && swift run XCResultParser ${{ github.workspace }}/Logs/TestResults.xcresult > ${{ github.workspace }}/Logs/TestResults.txt
         shell: bash 
         
       - name: Show hierarchy
-        run: tree
+        run: brew install tree && tree
         shell: bash
         
-      - name: Parse .xcresult file
-        run: cd ${{ github.workspace }}/Scripts/xcresult-parser
-          && swift build
-        shell: bash 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: xcode-test-results
+          path: ${{ github.workspace }}/Logs/TestResults.txt
