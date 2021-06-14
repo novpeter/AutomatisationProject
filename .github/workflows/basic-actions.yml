@@ -76,14 +76,6 @@ jobs:
         with:
           name: xcode-test-results
           path: ${{ github.workspace }}/Artifacts
-
-      - name: Show hierarchy
-        run: tree
-        shell: bash
-      
-      - name: Unzip artifacts
-        run: unzip swift-lint-results.zip && unzip xcode-test-results.zip
-        shell: bash
           
       - name: Generate review report
         uses: novpeter/review-report-generator-github-action@1.1
