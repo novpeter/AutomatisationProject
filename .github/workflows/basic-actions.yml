@@ -86,7 +86,7 @@ jobs:
         shell: bash
           
       - name: Generate review report
-        uses: novpeter/review-report-generator-github-action@v1.0
+        uses: novpeter/review-report-generator-github-action@1.0
         with:
           swiftlint-result-path: ${{ github.workspace }}/Artifacts/${{ env.SWIFTLINT_RESULT_NAME }}
           xcode-tests-result-path: ${{ github.workspace }}/Artifacts/${{ env.XCODE_TESTS_RESULT_NAME }}
