@@ -88,7 +88,7 @@ jobs:
       - name: Save message text to variable
         run: |
           echo 'REVIEWS_REPORT<<EOF' >> $GITHUB_ENV
-          cat ${{ github.workspace }}/Artifacts/ReviewReport.txt >> $GITHUB_ENV
+          curl https://httpbin.org/json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
       
       - name: Send report file to Telegram
@@ -97,4 +97,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            The report:\n ${{ env.reviews_report }}
+            The report: ${{ env.reviews_report }}
