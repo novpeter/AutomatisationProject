@@ -53,10 +53,6 @@ jobs:
           && swift run XCResultParser ${{ github.workspace }}/Logs/TestResults.xcresult > ${{ github.workspace }}/Logs/${{ env.XCODE_TESTS_RESULT_NAME }}
         shell: bash 
         
-      - name: Show hierarchy
-        run: brew install tree && tree
-        shell: bash
-        
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -83,6 +79,8 @@ jobs:
           swiftlint-result-path: ./Artifacts/${{ env.SWIFTLINT_RESULT_NAME }}
           xcode-tests-result-path: ./Artifacts/${{ env.XCODE_TESTS_RESULT_NAME }}
       
-      - name: Show hierarchy
-        run: tree
-        shell: bash
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: review-report
+          path: ${{ github.workspace }}/Artifacts/ReviewReport.txt
