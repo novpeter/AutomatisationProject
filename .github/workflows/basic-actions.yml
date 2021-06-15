@@ -86,12 +86,15 @@ jobs:
           path: ${{ github.workspace }}/Artifacts/ReviewReport.txt
           
       - name: Save message text to variable
-        run: cat ${{ github.workspace }}/Artifacts/ReviewReport.txt >> $GITHUB_ENV
+        run: |
+          echo 'REPORT<<EOF' >> $GITHUB_ENV
+          cat ${{ github.workspace }}/Artifacts/ReviewReport.txt >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       
       - name: Send to Telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ env }}
+          message: ${{ env.report }}
           document: ${{ github.workspace }}/Artifacts/ReviewReport.txt
