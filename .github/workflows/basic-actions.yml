@@ -90,11 +90,15 @@ jobs:
           echo 'REVIEWS_REPORT<<EOF' >> $GITHUB_ENV
           cat ${{ github.workspace }}/Artifacts/ReviewReport.txt >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+        
+      - name: Use the value
+        run: |
+          echo "${{ env.reviews_report }}"
       
       - name: Send to Telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ env.reviews_report }}
+          message: "${{ env.reviews_report }}"
           document: ${{ github.workspace }}/Artifacts/ReviewReport.txt
