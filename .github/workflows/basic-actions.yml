@@ -87,7 +87,7 @@ jobs:
           
       - name: Save message text to variable
         run: |
-          echo 'REPORT<<EOF' >> $GITHUB_ENV
+          echo 'REVIEWS_REPORT<<EOF' >> $GITHUB_ENV
           cat ${{ github.workspace }}/Artifacts/ReviewReport.txt >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
       
@@ -96,5 +96,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ env.report }}
+          message: ${{ env.reviews_report }}
           document: ${{ github.workspace }}/Artifacts/ReviewReport.txt
