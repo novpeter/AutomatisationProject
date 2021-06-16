@@ -70,22 +70,17 @@ jobs:
           path: ${{ github.workspace }}/Artifacts
           
       - name: Generate review report
-        uses: novpeter/review-report-generator-action@1.10
+        uses: novpeter/review-report-generator-action@1.11
         with:
           swiftlint-result-path: ./Artifacts/${{ env.SWIFTLINT_RESULT_NAME }}
           xcode-tests-result-path: ./Artifacts/${{ env.XCODE_TESTS_RESULT_NAME }}
+          author: ${{ github.event.pull_request.user.login }}
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: review-report
           path: ${{ github.workspace }}/Artifacts/ReviewReport.txt
-          
-      - name: Save message text to variable
-        run: |
-          echo 'REVIEWS_REPORT<<EOF' >> $GITHUB_ENV
-          cat ${{ github.workspace }}/Artifacts/ReviewReport.txt >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
       
       - name: Send report file to Telegram
         uses: appleboy/telegram-action@master
