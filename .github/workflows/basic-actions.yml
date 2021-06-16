@@ -95,6 +95,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          message: |
-            The report: ${{ env.reviews_report }}
+          message_file: ./Artifacts/ReviewReport.txt
