@@ -72,7 +72,7 @@ jobs:
       - name: Generate review report
         uses: novpeter/review-report-generator-action@v1.0
         with:
-          swiftlint-result-path: ./Artifacts/${{ env.SWIFTLINT_RESUL_NAME }}
+          swiftlint-result-path: ./Artifacts/${{ env.SWIFTLINT_RESULT_NAME }}
           xcode-tests-result-path: ./Artifacts/${{ env.XCODE_TESTS_RESULT_NAME }}
           author: ${{ github.event.pull_request.user.login }}
       
