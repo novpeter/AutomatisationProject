@@ -11,7 +11,6 @@ env:
   XCODE_TESTS_RESULT_NAME: 'TestResults.txt'
 
 jobs:
- 
   Linter:
     runs-on: ubuntu-latest
     steps:
